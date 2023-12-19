@@ -1,0 +1,33 @@
+{% extends "layout/auth/layout.html" %} {% block content %}
+<div class="card col-12 col-md-4">
+  <div class="card-header">Login</div>
+  <div class="card-body">
+    <h1 class="card-title text-center py-4">Login</h1>
+    <form method="POST" action="{{ url_for('login') }}">
+      <div class="mb-3">
+        <label for="exampleInputUsername1" class="form-label">Username</label>
+        <input
+          name="username"
+          type="username"
+          class="form-control"
+          id="exampleInputUsername1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <p class="card-text text-center">
+        Don't have account?
+        <a class="text-primary" href="{{ url_for('register') }}">Register</a>
+      </p>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+
+<div
+  class="container d-flex flex-column justify-content-center align-items-center col-12 col-md-6 py-4"
+>
+  <h1 class="py-4">{{ donatur["judul"] }}</h1>
+  <img
+    src="{{ url_for('static', filename='img/img_donatur/' + donatur['image']) }}"
+    alt="{{ donatur['image'] }}"
+    class="img-fluid rounded"
+  />
+  <p class="font-weight-light pt-4">{{ donatur["createdAt"]|date }}</p>
+  <p class="text-justify">
+    {% autoescape false %} {{ donatur["deskripsi"]|linebreaksbr }} {%
+    endautoescape %}
+  </p>
+  <div class="col-12 col-sm-6 col-md-4 mt-4">
+    <img
+      src="{{ url_for('static', filename='img/img_qr/' + donatur['imageQr']) }}"
+      alt="{{ donatur['imageQr'] }}"
+      class="img-fluid rounded"
+    />
+  </div>
+</div>
+
+{% endblock %}

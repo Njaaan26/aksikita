@@ -1,0 +1,57 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="m-0">Data Users</p>
+      <a class="btn btn-success" href="{{ url_for('register') }}" role="button"
+        >Tambah Data</a
+      >
+    </div>
+  </div>
+  <div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for user in users %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ user['username'] }}</td>
+          <td>{{ user['email'] }}</td>
+          <td>
+            {% if user['role'] == "admin" %}
+            <span class="badge badge-warning">{{ user['role'] }}</span>
+            {% elif user['role'] == "donatur" %}
+            <span class="badge badge-success">{{ user['role'] }}</span>
+            {% else %}
+            <span class="badge badge-danger">{{ user['role'] }}</span>
+            {% endif %}
+          </td>
+          <td class="d-flex align-items-center">
+            <a
+              class="btn btn-warning mr-2"
+              href="{{ url_for('data_users_edit', id=user['_id']) }}"
+              role="button"
+              >Edit</a
+            >
+            <form
+              method="POST"
+              action="{{ url_for('data_users_delete', id=user['_id']) }}"
+            >
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

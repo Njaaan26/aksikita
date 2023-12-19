@@ -1,0 +1,85 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">Edit Data Donatur</div>
+  <div class="card-body">
+    <div class="row">
+      <div
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center"
+      >
+        <img
+          src="{{ url_for('static', filename='img/img_donatur/' + donatur['image']) }}"
+          alt="{{ donatur['image'] }}"
+          class="img-fluid text-center w-50 mb-2"
+        />
+      </div>
+      <div
+        class="col-12 col-md-6 d-flex justify-content-center align-items-center"
+      >
+        <img
+          src="{{ url_for('static', filename='img/img_qr/' + donatur['imageQr']) }}"
+          alt="{{ donatur['imageQr'] }}"
+          class="img-fluid text-center w-50 mb-2"
+        />
+      </div>
+    </div>
+    <form
+      action="{{ url_for('data_donatur_update', id=donatur['_id']) }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="exampleInputJudul1">Judul</label>
+        <input
+          value="{{ donatur['judul'] }}"
+          name="judul"
+          type="text"
+          class="form-control"
+          id="exampleInputJudul1"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlDeskripsi1">Deskripsi</label>
+        <textarea
+          name="deskripsi"
+          class="form-control"
+          id="exampleFormControlDeskripsi1"
+          rows="3"
+        >
+  {{ donatur['deskripsi'] }}</textarea
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlDeskripsi1">Upload Image</label>
+        <div class="custom-file mb-3">
+          <input
+            type="file"
+            name="image"
+            class="custom-file-input"
+            id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01"
+          />
+          <label class="custom-file-label" for="inputGroupFile01"
+            >Choose file</label
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlDeskripsi1">Upload Image QR</label>
+        <div class="custom-file mb-3">
+          <input
+            type="file"
+            name="imageQr"
+            class="custom-file-input"
+            id="inputGroupFile02"
+            aria-describedby="inputGroupFileAddon02"
+          />
+          <label class="custom-file-label" for="inputGroupFile02"
+            >Choose file</label
+          >
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Data</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

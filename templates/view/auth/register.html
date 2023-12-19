@@ -1,0 +1,53 @@
+{% extends "layout/auth/layout.html" %} {% block content %}
+<div class="card col-12 col-md-4">
+  <div class="card-header">Register</div>
+  <div class="card-body">
+    <h1 class="card-title text-center py-4">Register</h1>
+    <form action="{{ url_for('register') }}" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputUsername1" class="form-label">Username</label>
+        <input
+          name="username"
+          type="username"
+          class="form-control"
+          id="exampleInputUsername1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          name="email"
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+        />
+      </div>
+      <div class="mb-3 d-none">
+        <label for="exampleInputRole1" class="form-label">Role</label>
+        <input
+          name="role"
+          type="text"
+          class="form-control"
+          id="exampleInputRole1"
+        />
+      </div>
+      <p class="card-text text-center">
+        Already have account?
+        <a class="text-primary text-center" href="{{ url_for('login') }}"
+          >Login</a
+        >
+      </p>
+      <button type="submit" class="btn btn-primary w-100">Register</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

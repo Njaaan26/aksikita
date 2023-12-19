@@ -1,0 +1,92 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container py-2">
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+      <img
+        src="{{ url_for('static', filename='img/img_navbar/AksiKita Logo.png') }}"
+        alt="SukaKita"
+        width="128"
+        height="28"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link {{ 'active' if request.path == '/' }}"
+            {%  if request.path == '/' %} aria-current="page" {% endif %}
+            href="{{ url_for('home') }}"
+            >Beranda</a>
+        </li>       
+        <li class="nav-item">
+          <a
+            class="nav-link {{ 'active' if request.path == '/aktivitas' }}"
+            {% if request.path == "/aktivitas" %} aria-current="page" {% endif %}
+            href="{{ url_for('aktivitas') }}"
+            >Aktivitas</a
+          >
+        </li>        
+        <li class="nav-item">
+          <a
+            class="nav-link {{ 'active' if request.path == '/donatur' }}"
+            {% if request.path == "/donatur" %} aria-current="page" {% endif %}
+            href="{{ url_for('donatur') }}"
+            >Donatur</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {{ 'active' if request.path == '/artikel' }}"
+            {% if request.path == "/artikel" %} aria-current="page" {% endif %}
+            href="{{ url_for('artikel') }}"
+            >Artikel</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link {{ 'active' if request.path == '/tentang' }}"
+            {% if request.path == "/tentang" %} aria-current="page" {% endif %}
+            href="{{ url_for('tentang') }}"
+            >Tentang Kami</a
+          >
+        </li>
+      </ul>
+
+      {% if current_user.username %}
+      <div class="navbar-button d-flex align-items-center gap-2">
+        <a class="btn btn-primary" href="{{ url_for('aktivitasku') }}" role="button"
+          >Hello, {{ current_user.username }}</a
+        >
+        <a
+          class="btn btn-outline-danger"
+          href="{{ url_for('logout') }}"
+          role="button"
+          >Logout</a
+        >
+      </div>
+      {% else %}
+      <div class="navbar-button d-flex align-items-center gap-2">
+        <a class="btn btn-primary" href="{{ url_for('login') }}" role="button"
+          >Login</a
+        >
+        <a
+          class="btn btn-outline-primary"
+          href="{{ url_for('register') }}"
+          role="button"
+          >Register</a
+        >
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>

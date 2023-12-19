@@ -1,0 +1,57 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="m-0">Data Aktivitasku</p>
+      <a class="btn btn-success" href="{{ url_for('aktivitas') }}" role="button"
+        >Tambah Data</a
+      >
+    </div>
+  </div>
+  <div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Aktivitas</th>
+          <th>Username</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for aktivitasku in aktivitasku %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ aktivitasku['aktivitasData']['judul'] }}</td>
+          <td>{{ aktivitasku['username'] }}</td>
+          <td>
+            {% if aktivitasku['status'] == "ditolak" %}
+            <span class="badge badge-danger">{{ aktivitasku['status'] }}</span>
+            {% elif aktivitasku['status'] == "diterima" %}
+            <span class="badge badge-success">{{ aktivitasku['status'] }}</span>
+            {% else %}
+            <span class="badge badge-warning">{{ aktivitasku['status'] }}</span>
+            {% endif %}
+          </td>
+          <td class="d-flex align-items-center">
+            <a
+              class="btn btn-warning mr-2"
+              href="{{ url_for('data_aktivitasku_edit', id=aktivitasku['_id']) }}"
+              role="button"
+              >Edit</a
+            >
+            <form
+              method="POST"
+              action="{{ url_for('data_aktivitasku_delete', id=aktivitasku['_id']) }}"
+            >
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

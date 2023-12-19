@@ -1,0 +1,50 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">
+    <div class="d-flex justify-content-between align-items-center">
+      <p class="m-0">Data Artikel</p>
+      <a
+        class="btn btn-success"
+        href="{{ url_for('data_artikel_create') }}"
+        role="button"
+        >Tambah Data</a
+      >
+    </div>
+  </div>
+  <div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Judul</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%for artikel in artikel %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ artikel['judul'] }}</td>
+          <td>{{ artikel['image'] }}</td>
+          <td class="d-flex align-items-center">
+            <a
+              class="btn btn-warning mr-2"
+              href="{{ url_for('data_artikel_edit', id=artikel['_id']) }}"
+              role="button"
+              >Edit</a
+            >
+            <form
+              method="POST"
+              action="{{ url_for('data_artikel_delete', id=artikel['_id']) }}"
+            >
+              <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

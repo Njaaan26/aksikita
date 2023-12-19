@@ -1,0 +1,88 @@
+<a href="{{ url_for('dashboard') }}" class="brand-link">
+  <img
+    src="{{ url_for('static', filename='img/img_navbar/AksiKita Logo.png') }}"
+    alt="SukaKita"
+    class="brand-image"
+    width="128"
+    height="28"
+  />
+  <span class="brand-text font-weight-light">SukaKita</span>
+</a>
+
+<div class="sidebar">
+  <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+    <div class="info">
+      <a href="{{ url_for('dashboard') }}" class="d-block"
+        >Hello, {{ current_user.username }}</a
+      >
+    </div>
+  </div>
+  <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-col">
+      <li class="nav-item">
+        <a
+          href="{{ url_for('dashboard') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/dashboard' }}"
+        >
+          <i class="nav-icon fas fa-tachometer-alt"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('data_users') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/data_user' }}"
+        >
+          <i class="nav-icon fas fa-users"></i>
+          <p>Data Users</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('data_aktivitas') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/data_aktivitas' }}"
+        >
+          <i class="nav-icon fas fa-chart-line"></i>
+          <p>Data Aktivitas</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('data_aktivitasku') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/data_aktivitasku' }}"
+        >
+          <i class="nav-icon fas fa-file-contract"></i>
+          <p>Data Aktivitasku</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('data_donatur') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/data_donatur' }}"
+        >
+          <i class="nav-icon fas fa-hand-holding-usd"></i>
+          <p>Data Donasi</p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="{{ url_for('data_artikel') }}"
+          class="nav-link {{ 'active text-white font-weight-normal' if request.path == '/data_artikel' }}"
+        >
+          <i class="nav-icon fas fa-newspaper"></i>
+          <p>Data Artikel</p>
+        </a>
+      </li>
+      <li class="nav-item w-100 mt-3">
+        <form method="POST" action="{{ url_for('logout') }}">
+          <button
+            class="btn btn-danger d-flex justify-content-center align-items-center w-100"
+          >
+            <i class="nav-icon fas fa-sign-out-alt mr-2"></i>
+            <p class="mb-0">Logout</p>
+          </button>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</div>

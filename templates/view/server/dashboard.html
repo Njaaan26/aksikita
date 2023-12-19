@@ -1,0 +1,84 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100 min-vh-100">
+  <div class="card-header">Dashboard</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>{{ users }}</h3>
+
+            <p>User</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-android-contacts"></i>
+          </div>
+          <a href="{{ url_for('data_users') }}" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ aktivitasku }}</h3>
+
+            <p>Aktivitasku</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-android-bicycle"></i>
+          </div>
+          <a href="{{ url_for('data_aktivitasku') }}" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ aktivitas }}</h3>
+
+            <p>Aktivitas</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-android-walk"></i>
+          </div>
+          <a href="{{ url_for('data_aktivitas') }}" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>{{ donatur }}</h3>
+
+            <p>Donatur</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-cash"></i>
+          </div>
+          <a href="{{ url_for('data_donatur') }}" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <div class="small-box bg-primary">
+          <div class="inner">
+            <h3>{{ artikel }}</h3>
+
+            <p>Artikel</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-clipboard"></i>
+          </div>
+          <a href="{{ url_for('data_artikel') }}" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

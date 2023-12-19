@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/bootstrap/bootstrap.css') }}"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/bootstrap/bootstrap.css.map') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <title>AksiKita</title>
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      {% block header %} {% include "layout/client/navbar.html" %} {% endblock
+      %}
+    </header>
+    <main class="min-vh-100 px-3 p-md-0">
+      {% with errors = get_flashed_messages(category_filter=["error"]) %} {% if
+      errors %} {%- for message in errors %}
+      <div class="alert alert-danger mx-3" role="alert">{{ message }}</div>
+      {% endfor -%} {% endif %} {% endwith %}{% with messages =
+      get_flashed_messages(category_filter=["success"]) %} {% if messages %} {%
+      for message in messages %}
+      <div class="alert alert-success mx-3" role="alert">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+    </main>
+    <footer>
+      {% block footer %} {% include "layout/client/footer.html" %}{% endblock %}
+    </footer>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.bundle.js.map') }}"></script>
+  </body>
+</html>

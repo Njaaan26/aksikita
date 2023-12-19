@@ -1,0 +1,77 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">Edit Data Aktivitas</div>
+  <div class="card-body">
+    <form
+      action="{{ url_for('data_aktivitasku_update', id=aktivitasku['_id']) }}"
+      method="POST"
+    >
+      <div class="mb-3">
+        <label for="exampleInputUsername1" class="form-label">Username</label>
+        <input
+          name="username"
+          type="text"
+          value="{{ aktivitasku['username'] }}"
+          class="form-control"
+          id="exampleInputUsername1"
+          aria-describedby="UsernameHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDeskripsi1" class="form-label"
+          >Mengapa anda tertarik menjadi relawan aktivitas ini?</label
+        >
+        <div class="form-floating">
+          <textarea
+            name="deskripsi"
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+          >
+{{ aktivitasku['deskripsi'] }}</textarea
+          >          
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputDeskripsi2" class="form-label"
+          >Mengapa anda relawan yang tepat untuk aktivitas ini?</label
+        >
+        <div class="form-floating">
+          <textarea
+            name="deskripsi2"
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+          >
+{{ aktivitasku['deskripsi2'] }}</textarea
+          >          
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPekerjaan1" class="form-label"
+          >Pekerjaan anda</label
+        >
+        <input
+          name="pekerjaan"
+          type="text"
+          class="form-control"
+          id="exampleInputPekerjaan1"
+          aria-describedby="PekerjaanHelp"
+          value="{{ aktivitasku['pekerjaan'] }}"
+        />
+      </div>
+      <div class="form-group">
+        <label for="inputState">Status</label>
+        <select name="status" id="inputState" class="form-control">
+          <option value="pending" {% if aktivitasku['status'] == 'pending' %} selected {% endif %}>Pending</option>
+          <option value="diterima" {% if aktivitasku['status'] == 'diterima' %} selected {% endif %}>Diterima</option>
+          <option value="ditolak" {% if aktivitasku['status'] == 'ditolak' %} selected {% endif %}>Ditolak</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit data</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

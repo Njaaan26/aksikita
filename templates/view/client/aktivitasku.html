@@ -1,0 +1,41 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+<section class="aktivitas">
+  <div class="container d-flex flex-column min-vh-100 gap-4 pt-5">
+    <h1 class="fs-1 fw-bold text-center">Aktivitasku</h1>
+    <div class="row gy-4">
+      {%for aktivitasku in aktivitasku %} {% if aktivitasku['username'] ==
+      current_user.username %}
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div
+          class="card {% if aktivitasku['status'] == 'diterima' %} text-bg-success {% elif aktivitasku['status'] == 'ditolak' %} text-bg-danger {% else %} text-bg-warning {%endif%} w-100 shadow"
+        >
+          <div class="card-header">
+            Status : {% if aktivitasku['status'] == 'diterima' %} Diterima {%
+            elif aktivitasku['status'] == 'ditolak' %} Ditolak {% else %}
+            Pending {%endif%}
+          </div>
+          <img
+            src="{{ url_for('static', filename='img/img_aktivitas/' + aktivitasku['aktivitasData']['image']) }}"
+            class="card-img-top"
+            alt="image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">
+              {{ aktivitasku["aktivitasData"]["judul"] }}
+            </h5>
+            <p class="card-text line-clamp">
+              {{ aktivitasku["aktivitasData"]["deskripsi"] }}
+            </p>
+            <a
+              href="{{ url_for('aktivitas_detail', id=aktivitasku['aktivitasData']['_id']) }}"
+              class="btn btn-light"
+              >Baca Selengkapnya</a
+            >
+          </div>
+        </div>
+      </div>
+      {%endif%} {%endfor%}
+    </div>
+  </div>
+</section>
+{% endblock %}

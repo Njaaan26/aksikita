@@ -1,0 +1,133 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+<div
+  class="container d-flex flex-column justify-content-center align-items-center col-12 col-md-6 py-4"
+>
+  <h1 class="py-4">{{ aktivitas["judul"] }}</h1>
+  <img
+    src="{{ url_for('static', filename='img/img_aktivitas/' + aktivitas['image']) }}"
+    alt="{{ aktivitas['image'] }}"
+    class="img-fluid rounded"
+  />
+  <p class="font-weight-light pt-4">{{ aktivitas["createdAt"]|date }}</p>
+  <p class="text-justify">
+    {% autoescape false %} {{ aktivitas["deskripsi"]|linebreaksbr }} {%
+    endautoescape %}
+  </p>
+
+  {% if not current_user.username %}
+  <a class="btn btn-success w-100" href="{{ url_for('login') }}" role="button"
+    >Daftar Aktivitas</a
+  >
+  {% elif username != current_user.username%}
+  <button
+    type="button"
+    class="btn btn-success w-100"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    Daftar Aktivitas
+  </button>
+  {% else%}
+  <form
+    method="POST"
+    action="{{ url_for('data_aktivitasku_delete', id=id) }}"
+    class="w-100"
+  >
+    <button type="submit" class="btn btn-danger w-100">
+      Batalkan pendaftaran
+    </button>
+  </form>
+  {% endif %}
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Daftar {{ aktivitas["judul"] }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          method="POST"
+          action="{{ url_for('data_aktivitasku_store', id=aktivitas['_id']) }}"
+          id="form-modal"
+        >
+          <div class="mb-3">
+            <label for="exampleInputUsername1" class="form-label"
+              >Username</label
+            >
+            <input
+              type="text"
+              value="{{ current_user.username }}"
+              class="form-control"
+              id="username"
+              aria-describedby="UsernameHelp"
+              disabled
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputDeskripsi1" class="form-label"
+              >Mengapa anda tertarik menjadi relawan aktivitas ini?</label
+            >
+            <div class="input-group">
+              <textarea
+                name="deskripsi"
+                class="form-control"
+                aria-label="With textarea"
+                style="height: 100px"
+              ></textarea>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputDeskripsi2" class="form-label"
+              >Mengapa anda relawan yang tepat untuk aktivitas ini?</label
+            >
+            <div class="input-group">
+              <textarea
+                name="deskripsi2"
+                class="form-control"
+                aria-label="With textarea"
+                style="height: 100px"
+              ></textarea>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPekerjaan1" class="form-label"
+              >Pekerjaan anda</label
+            >
+            <input
+              name="pekerjaan"
+              type="text"
+              class="form-control"
+              id="pekerjaan"
+              aria-describedby="PekerjaanHelp"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-primary" form="form-modal">
+          Daftar Aktivitas
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

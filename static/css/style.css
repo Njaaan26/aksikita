@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@400;600&display=swap");
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Poppins", sans-serif;
+}
+
+p,
+a,
+i {
+  font-family: "Roboto", sans-serif;
+}
+
+.active {
+  color: #0d6efd !important;
+  font-weight: 600 !important;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  max-height: 4.5em;
+}
+
+.hero-slogan {
+  padding-top: 6rem;
+  font-size: 4rem;
+}
+
+.login {
+  color: #ffffff;
+  background-color: #11009e;
+}
+
+.register {
+  color: #ffffff;
+  background-color: #11009e;
+}
+
+.footer {
+  color: #ffffff;
+  background-color: #11009e;
+}
+.card-img-top {
+  max-height: 250px;
+  min-height: 150px;
+  object-fit: cover;
+}

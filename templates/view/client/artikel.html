@@ -1,0 +1,29 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+<section class="artikel">
+  <div class="container d-flex flex-column min-vh-100 gap-4 pt-5">
+    <h1 class="fs-1 fw-bold text-center">Artikel</h1>
+    <div class="row gy-4">
+      {%for artikel in artikel%}
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card w-100 shadow">
+          <img
+            src="{{ url_for('static', filename='img/img_artikel/' + artikel['image']) }}"
+            class="card-img-top"
+            alt="image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ artikel["judul"] }}</h5>
+            <p class="card-text line-clamp">{{ artikel["deskripsi"] }}</p>
+            <a
+              href="{{ url_for('artikel_detail', id=artikel['_id']) }}"
+              class="btn btn-primary"
+              >Baca Selengkapnya</a
+            >
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+{% endblock %}

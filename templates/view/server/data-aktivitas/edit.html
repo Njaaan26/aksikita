@@ -1,0 +1,55 @@
+{% extends "layout/server/layout.html" %} {% block content %}
+<div class="card w-100">
+  <div class="card-header">Edit Data Aktivitas</div>
+  <div class="card-body">
+    <img
+      src="{{ url_for('static', filename='img/img_aktivitas/' + aktivitas['image']) }}"
+      alt="{{ aktivitas['image'] }}"
+      class="img-fluid text-center w-50 mb-2"
+    />
+    <form
+      action="{{ url_for('data_aktivitas_update', id=aktivitas['_id']) }}"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="exampleInputJudul1">Judul</label>
+        <input
+          value="{{ aktivitas['judul'] }}"
+          name="judul"
+          type="text"
+          class="form-control"
+          id="exampleInputJudul1"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlDeskripsi1">Deskripsi</label>
+        <textarea
+          name="deskripsi"
+          class="form-control"
+          id="exampleFormControlDeskripsi1"
+          rows="3"
+        >
+  {{ aktivitas['deskripsi'] }}</textarea
+        >
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlDeskripsi1">Upload Image</label>
+        <div class="custom-file mb-3">
+          <input
+            type="file"
+            name="image"
+            class="custom-file-input"
+            id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01"
+          />
+          <label class="custom-file-label" for="inputGroupFile01"
+            >Choose file</label
+          >
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Edit Data</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

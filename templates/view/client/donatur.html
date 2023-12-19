@@ -1,0 +1,29 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+<section class="donatur">
+  <div class="container d-flex flex-column min-vh-100 gap-4 pt-5">
+    <h1 class="fs-1 fw-bold text-center">Donasi</h1>
+    <div class="row gy-4">
+      {%for donatur in donatur%}
+      <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+        <div class="card w-100 shadow">
+          <img
+            src="{{ url_for('static', filename='img/img_donatur/' + donatur['image']) }}"
+            class="card-img-top"
+            alt="image"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ donatur["judul"] }}</h5>
+            <p class="card-text line-clamp">{{ donatur["deskripsi"] }}</p>
+            <a
+              href="{{ url_for('donatur_detail', id=donatur['_id']) }}"
+              class="btn btn-primary"
+              >Baca Selengkapnya</a
+            >
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</section>
+{% endblock %}

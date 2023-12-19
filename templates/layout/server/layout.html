@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/AdminLTE/fontawesome-free/css/all.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/AdminLTE/dist/css/adminlte.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/AdminLTE/datatables-bs4/css/dataTables.bootstrap4.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/AdminLTE/datatables-responsive/css/responsive.bootstrap4.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/css/buttons.bootstrap4.min.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <title>SukaKita</title>
+    {% endblock %}
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <header>
+        {% block header %} {% include "layout/server/navbar.html" %} {% endblock
+        %}
+      </header>
+      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        {% block sidebar %} {% include "layout/server/sidebar.html" %} {%
+        endblock %}
+      </aside>
+      <main class="px-3 p-md-0">
+        <div class="content-wrapper">
+          <div class="content">
+            <div
+              class="container-fluid d-flex flex-column justify-content-center p-3"
+            >
+              {% with errors = get_flashed_messages(category_filter=["error"])
+              %} {% if errors %} {%- for message in errors %}
+              <div class="alert alert-danger" role="alert">{{ message }}</div>
+              {% endfor -%} {% endif %} {% endwith %}{% with messages =
+              get_flashed_messages(category_filter=["success"]) %} {% if
+              messages %} {% for message in messages %}
+              <div class="alert alert-success" role="alert">{{ message }}</div>
+              {% endfor %} {% endif %} {% endwith %} {% block content %} {%
+              endblock %}
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="main-footer">
+        {% block footer %} {% include "layout/server/footer.html" %}{% endblock
+        %}
+      </footer>
+    </div>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/dist/js/adminlte.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/AdminLTE/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script>
+      $(function () {
+        $("#example1")
+          .DataTable({
+            responsive: true,
+            lengthChange: false,
+            autoWidth: false,
+          })
+          .buttons()
+          .container()
+          .appendTo("#example1_wrapper .col-md-6:eq(0)");
+        $("#example2").DataTable({
+          paging: true,
+          lengthChange: false,
+          searching: false,
+          ordering: true,
+          info: true,
+          autoWidth: false,
+          responsive: true,
+        });
+      });
+    </script>
+    <script>
+      $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this)
+          .siblings(".custom-file-label")
+          .addClass("selected")
+          .html(fileName);
+      });
+    </script>
+  </body>
+</html>

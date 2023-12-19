@@ -1,0 +1,94 @@
+{% extends "layout/client/layout.html" %} {% block content %}
+
+<section class="tentang">
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center min-vh-100 gap-4 my-2 rounded-4"
+    style="color: white; background-color: #11009e"
+  >
+    <img
+      class="img-fluid w-25 w-md-50 py-2"
+      src="{{ url_for('static', filename='img/img_tentang/AksiKita Logo.png') }}"
+      alt="AksiKita"
+    />
+
+    <p class="text-center w-75">
+      AksiKita, sebuah platform unik yang menghubungkan hati-hati dengan tindakan baik. Solusi inovatif untuk memberdayakan masyarakat, menyediakan akses mudah ke kegiatan sosial, dan mendukung perubahan positif. Berkomitmen untuk merangkul kepedulian, AksiKita menjadi wadah inklusif bagi individu yang ingin membangun dunia yang lebih baik. Sama seperti fringilla diam vel fermentum facilisis, AksiKita membangun jaringan dan komunitas yang mendukung perubahan sosial. Dengan informasi yang mudah diakses, donasi yang menyentuh, dan edukasi sosial yang mendalam, AksiKita menghadirkan pengalaman bermakna untuk mereka yang ingin beraksi. AksiKita, tempat di mana setiap tindakan kebaikan memiliki dampak besar.
+    </p>
+  </div>
+</section>
+
+<section class="visi-misi">
+  <div class="container d-flex flex-column mt-5 pt-5">
+    <div class="row gy-2">
+      <div
+        class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center"
+      >
+        <h1 class="fs-1 fw-bold text-center">Visi</h1>
+        <p>
+          Menjadi pionir dan katalisator dalam membangun ekosistem sosial yang terkoneksi, di mana setiap individu merasa berdaya untuk berkontribusi pada kebaikan bersama dan membentuk dunia yang lebih berkelanjutan, inklusif, serta penuh dengan harapan dan inspirasi.
+        </p>
+      </div>
+      <div
+        class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center"
+      >
+        <h1 class="fs-1 fw-bold text-center">Misi</h1>
+        <p>
+          Menggalang partisipasi aktif dari seluruh lapisan masyarakat untuk terlibat dalam kegiatan sosial yang beragam dan bermakna. Memberikan dukungan finansial dan moral kepada berbagai program, kampanye, dan inisiatif sosial yang bertujuan untuk memperbaiki kondisi sosial.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kontributor py-5 mb-5">
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center"
+  >
+    <h1 class="fs-1 fw-bold text-center pb-4">Kontributor</h1>
+    <div class="row gy-2">
+      <div
+        class="col-12 col-md-6 col-lg-4 d-flex justify-content-center align-items-center"
+      >
+        <div class="card shadow">
+          <img
+            src="{{ url_for('static', filename='img/img_kontributor/Fauzan.png') }}"
+            class="card-img-top"
+            alt="person"
+          />
+          <div class="card-body">
+            <p class="card-text text-center">Fauzan Rizky Aditya</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-12 col-md-6 col-lg-4 d-flex justify-content-center align-items-center"
+      >
+        <div class="card shadow">
+          <img
+            src="{{ url_for('static', filename='img/img_kontributor/Shania.png') }}"
+            class="card-img-top"
+            alt="person"
+          />
+          <div class="card-body">
+            <p class="card-text text-center">Shania Bakhtiar Paturus</p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-12 col-md-6 col-lg-4 d-flex justify-content-center align-items-center"
+      >
+        <div class="card shadow">
+          <img
+            src="{{ url_for('static', filename='img/img_kontributor/Tazul.png') }}"
+            class="card-img-top"
+            alt="person"
+          />
+          <div class="card-body">
+            <p class="card-text text-center">Muhammad Tazul Arifin</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
